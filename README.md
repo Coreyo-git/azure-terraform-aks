@@ -35,6 +35,15 @@ To tear everything down:
 terraform destroy
 ```
 
+## Next steps
+
+Eventually deploy the [AKS Store Demo](https://github.com/Azure-Samples/aks-store-demo) for hands-on practice with AKS, kubectl, and Kubernetes concepts:
+
+```bash
+kubectl create namespace pets
+kubectl apply -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/main/aks-store-all-in-one.yaml -n pets
+```
+
 ## Resources
 
 - [Terraform azurerm provider docs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
