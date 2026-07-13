@@ -7,7 +7,7 @@ variable "location" {
 variable "resource_group_name" {
   description = "Name of the Azure resource group"
   type        = string
-  default     = "Pay-As-You-Go"
+  default     = "aks-demo-rg"
 }
 
 variable "cluster_name" {
@@ -22,8 +22,14 @@ variable "node_count" {
   default     = 2
 }
 
+variable "max_count" {
+    description = "Max number of nodes to scale to"
+    type = number
+    default = 5
+}
+
 variable "vm_size" {
   description = "VM size for the default node pool"
   type        = string
-  default     = "Standard_B2s"
+  default     = "standard_b2als_v2"
 }
