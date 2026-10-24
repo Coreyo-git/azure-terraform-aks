@@ -25,7 +25,8 @@
 coverage.*
 
 # The binary `go build` drops in the module folder (named after the module)
-/go_auth_webserver/go_auth_webserver
+/apps/auth-server/server
+/apps/auth-server/auth-server
 
 # Go workspace file, usually local-only
 go.work
