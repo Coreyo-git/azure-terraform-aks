@@ -18,13 +18,14 @@
 *.dll
 *.so
 *.dylib
-*.test          # binaries built by `go test -c`
-*.out           # coverage profiles (go test -coverprofile=coverage.out)
+# binaries built by `go test -c`
+*.test
+# coverage profiles (go test -coverprofile=coverage.out)
+*.out
 coverage.*
 
-# The binary `go build` drops in the project root (named after the module).
-# Change this to match your module name:
-/hello-go
+# The binary `go build` drops in the module folder (named after the module)
+/go_auth_webserver/go_auth_webserver
 
 # Go workspace file, usually local-only
 go.work
@@ -52,4 +53,5 @@ local.settings.json
 .DS_Store
 
 # --- Debugging ---
-__debug_bin*    # binaries created by the Delve debugger
+# binaries created by the Delve debugger
+__debug_bin*
