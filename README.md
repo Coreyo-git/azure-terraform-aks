@@ -12,7 +12,14 @@ Learning project for provisioning Azure infrastructure with Terraform, plus a Go
 │   └── modules/
 │       ├── aks/                 # AKS cluster (work in progress)
 │       └── governance/policies/ # Azure Policy: restrict resources to Australian regions
-└── go_auth_webserver/           # Go web server (Entra ID auth planned)
+├── apps/
+│   └── auth-server/             # Go web server (Entra ID auth planned)
+│       ├── cmd/server/          # main package
+│       └── go.mod
+└── deploy/
+    └── auth-server/             # Kubernetes manifests (Kustomize)
+        ├── base/
+        └── overlays/{dev,prod}/
 ```
 
 ## Prerequisites
@@ -57,15 +64,17 @@ kubectl apply -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/
 ## Go web server
 
 ```bash
-cd go_auth_webserver
-go run .
+cd apps/auth-server
+go run ./cmd/server
 ```
+
+Kubernetes manifests live in `deploy/auth-server`. Preview what an overlay renders with `kubectl kustomize deploy/auth-server/overlays/dev`, and apply it with `kubectl apply -k deploy/auth-server/overlays/dev`.
 
 ### Planned: Entra ID auth
 
 1. Create an app registration in Entra ID (portal first, then Terraform with the `azuread` provider).
 2. Add login to the Go server with OIDC (`coreos/go-oidc` + `golang.org/x/oauth2`) or MSAL Go.
-3. Load the client ID, tenant ID and secret from environment variables (`.env`, which git ignores).
+3. Load the client ID, tenant ID and secret from environment variables (`.env`, ).
 4. Deploy to AKS and replace the client secret with Workload Identity.
 
 ## Resources
