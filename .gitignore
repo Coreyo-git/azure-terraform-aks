@@ -8,3 +8,48 @@
 # Variable files that may contain secrets
 *.tfvars
 *.tfvars.json
+
+
+# --- Go build output ---
+/bin/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test          # binaries built by `go test -c`
+*.out           # coverage profiles (go test -coverprofile=coverage.out)
+coverage.*
+
+# The binary `go build` drops in the project root (named after the module).
+# Change this to match your module name:
+/hello-go
+
+# Go workspace file, usually local-only
+go.work
+go.work.sum
+
+# Vendored deps (remove this line if you decide to commit vendor/)
+/vendor/
+
+# --- Secrets / config (important for Entra ID) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+secrets/
+local.settings.json
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- Debugging ---
+__debug_bin*    # binaries created by the Delve debugger
